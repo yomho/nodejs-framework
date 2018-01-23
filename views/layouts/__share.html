@@ -7,5 +7,9 @@
 </head>
 <body>
   {% block content %}{% endblock %}
+  <script type="text/javascript">
+        var appVersion = '{{config.system.version}}';
+    </script>
+  <script data-main="/localet.js?v={{config.system.version}}" src="/lib/require.js?v={{config.system.version}}"></script>
 </body>
 </html>

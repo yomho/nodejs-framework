@@ -29,7 +29,8 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.set('port', process.env.PORT || 3000);
 //app.use(connect.compress);
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/static/public'));
+app.use(express.static(__dirname + '/static/pages'));
 app.use(require('cookie-parser')(config.private.secretKeys.cookieSecret));
 app.use(require('express-session')({
     resave: false, //添加 resave 选项

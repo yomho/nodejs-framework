@@ -2,6 +2,7 @@
     "public": {
         "locals": {
             "system": {
+                "version":"0.0.1",
                 "icp": "ICP",
                 "name": "demo"
             }

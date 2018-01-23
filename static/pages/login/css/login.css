@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.video-background video{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    /*加滤镜*/
+    /*-webkit-filter: grayscale(100%);*/
+    /*filter:grayscale(100%);*/
+}
+.video-background source{
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+}
