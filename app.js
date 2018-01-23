@@ -21,15 +21,30 @@ swig.setDefaults({
         now: function () {
             return new Date();
         },
-        config: config
+        config: config.public.locals
     }
 });
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
-app.set('port',process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000);
 //app.use(connect.compress);
 app.use(express.static(__dirname + '/public'));
+app.use(require('cookie-parser')(config.private.secretKeys.cookieSecret));
+app.use(require('express-session')({
+    resave: false, //添加 resave 选项
+    saveUninitialized: true, //添加 saveUninitialized 选项
+    //name: 'testapp',   //这里的name值得是cookie的name，默认cookie的name是：connect.sid
+    //secret: 'aF,.j)wBhq+E9n#aHHZ91Ba!VaoMfC', // 建议使用 128 个字符的随机字符串
+    //cookie: { maxAge: 60 * 1000 },
+    // store: new MongoStore({   //创建新的mongodb数据库
+    //      host: 'localhost',    //数据库的地址，本机的话就是127.0.0.1，也可以是网络主机
+    //      port: 27017,          //数据库的端口号
+    //      db: 'test-app'        //数据库的名称。
+    //  }),
+    secret: config.private.secretKeys.sessionSecret
+
+}));
 /*switch(app.get('env')){
     case 'development':
         // 紧凑的、 彩色的开发日志
@@ -44,20 +59,20 @@ app.use(express.static(__dirname + '/public'));
 }*/
 //app.get('/login',routes.login);
 routes.register(app);
-app.use(function(req, res){
+app.use(function (req, res) {
     res.type('text/plain');
     res.status(404);
     res.send('404 - Not Found');
 });
-app.use(function(err, req, res, next){
+app.use(function (err, req, res, next) {
     console.error(err.stack);
     res.type('text/plain');
     res.status(500);
     res.send('500 - Server Error');
 });
 
-app.listen(app.get('port'), function(){
-    console.log( 'Express started on http://localhost:'
-    +app.get('port')
-    + '; press Ctrl-C to terminate.');
+app.listen(app.get('port'), function () {
+    console.log('Express started on http://localhost:'
+        + app.get('port')
+        + '; press Ctrl-C to terminate.');
 });

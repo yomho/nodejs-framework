@@ -1,6 +1,16 @@
 {
-    "system":{
-        "icp":"ICP",
-        "name":"demo"
+    "public": {
+        "locals": {
+            "system": {
+                "icp": "ICP",
+                "name": "demo"
+            }
+        }
+    },
+    "private": {
+        "secretKeys": {
+            "cookieSecret": "123456",
+            "sessionSecret":"654321"
+        }
     }
 }
