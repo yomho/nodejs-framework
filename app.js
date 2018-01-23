@@ -1,5 +1,6 @@
 var express = require('express');
 var swig = require('swig');
+require('express-namespace');
 var routes = require('./routes');
 var config = require('./config.json');
 var app = express();
@@ -27,6 +28,7 @@ app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.set('port',process.env.PORT || 3000);
+//app.use(connect.compress);
 app.use(express.static(__dirname + '/public'));
 /*switch(app.get('env')){
     case 'development':
@@ -40,8 +42,8 @@ app.use(express.static(__dirname + '/public'));
         }));
         break;
 }*/
-app.get('/login',routes.login);
-
+//app.get('/login',routes.login);
+routes.register(app);
 app.use(function(req, res){
     res.type('text/plain');
     res.status(404);

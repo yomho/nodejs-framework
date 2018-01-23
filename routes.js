@@ -1,4 +1,7 @@
-exports.login=function(req, res){
-    //res.send('index page');
-    res.render('login', { title:'login' });
+exports.register=function(app){
+    var fs = require('fs');
+    var files = fs.readdirSync('./controllers');
+    files.forEach(function(path){
+        require('./controllers/'+path).register(app);
+    });
 };
