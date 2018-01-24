@@ -1,4 +1,4 @@
-//<1>fis3 release -d ./dist
+//<2>fis3 release -d ../dist/public
 // 所有的文件产出到 static/ 目录下
 // fis.match('public/**/*', {
 //     release: '/public/$0'
@@ -7,32 +7,28 @@
 
 // 启用插件npm install -g fis3-hook-relative
 // fis.hook('relative');
-// fis.match('public/**/*', {
-//     relative: "/public",
-//     url:"$0"
+// fis.match('*', {
+//     //relative: "/public",
+//     //url:"/public/"//,
+//     //release: '/public/$0'
 // });
-// fis.match('public/**/*.css', {
-//     useHash: true
-// });
-// fis.match('public/resource/**/*.css', {
-//     useHash: false
-// });
-// // 所有模板放到 tempalte 目录下
-// fis.match('public/**/*.js', {
-//     useHash: false
-// });
-// // 所有模板放到 tempalte 目录下
-// fis.match('public/**/*.html', {
-//     useHash: true
-// });
-// fis.match('public/**/*.png', {
-//    useHash: true
-// });
-fis.set('project.ignore', ['node_modules/**', 'output/**','public/**','dist/**', 'fis-conf.js']); // set 为覆盖不是叠加
-fis.match('*', {
-    useCompile: false
+fis.match('*.css', {
+    useHash: true
 });
-
+fis.match('resource/**/*.css', {
+    useHash: false
+});
+// 所有模板放到 tempalte 目录下
+fis.match('*.js', {
+    useHash: false
+});
+// 所有模板放到 tempalte 目录下
+fis.match('*.html', {
+    useHash: false
+});
+fis.match('*.png', {
+   useHash: true
+});
 // // optimize
 // fis.media('prod')
 //     .match('*.js', {
