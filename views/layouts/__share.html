@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}-{{config.system.name}}</title>
-  <link href="/resource/styles/jquery-ui/jquery-ui.min.css?v={{config.system.version}}" rel="stylesheet"/>
-  <link href="/resource/styles/jquery-ui/jquery-ui.structure.min.css?v={{config.system.version}}" rel="stylesheet"/>
-  <link href="/resource/styles/jquery-ui/jquery-ui.theme.min.css?v={{config.system.version}}" rel="stylesheet"/>
+  {% include "../../public/globals/head.html" ignore missing %}
   {% block head %}{% endblock %}
 </head>
+
 <body>
-  {% block header %}{% endblock %}
-  {% block content %}{% endblock %}
-   {% block footer %}{% endblock %}
-  <script src="/lib/jquery.js?v={{config.system.version}}"></script>
-  <script src="/lib/jquery-ui.min.js?v={{config.system.version}}"></script>
-  <script type="text/javascript">
-        var appVersion = '{{config.system.version}}';
-    </script>
-  <script data-main="/localet.js?v={{config.system.version}}" src="/lib/require.js?v={{config.system.version}}"></script>
+  {% block header %}{% endblock %} {% block content %}{% endblock %} {% block footer %}{% endblock %}
+  <!--<script src="/lib/jquery.js?v={{config.system.version}}"></script>
+  <script src="/lib/jquery-ui.min.js?v={{config.system.version}}"></script>-->
+  {% include "../../public/globals/jquery-scripts.html" ignore missing %}
+  {% block extendscripts %}{% endblock %}
+  {% block scripts %}{% endblock %}
 </body>
+
 </html>

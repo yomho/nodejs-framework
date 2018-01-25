@@ -1,4 +1,5 @@
 //<1>fis3 release -d ./dist
+//<2>fis3 release -d ./dist/public -r ./public
 // 所有的文件产出到 static/ 目录下
 // fis.match('public/**/*', {
 //     release: '/public/$0'
@@ -32,7 +33,9 @@ fis.set('project.ignore', ['node_modules/**', 'output/**','public/**','dist/**',
 fis.match('*', {
     useCompile: false
 });
-
+// fis.match('view/**/*', {
+//     useCompile: true
+// });
 // // optimize
 // fis.media('prod')
 //     .match('*.js', {

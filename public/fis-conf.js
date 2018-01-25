@@ -1,4 +1,5 @@
 //<2>fis3 release -d ../dist/public
+//或fis3 release -d ./dist/public -r ./public
 // 所有的文件产出到 static/ 目录下
 // fis.match('public/**/*', {
 //     release: '/public/$0'
@@ -12,23 +13,38 @@
 //     //url:"/public/"//,
 //     //release: '/public/$0'
 // });
-fis.match('*.css', {
+fis.match('*', {
+    useHash: false
+});
+fis.match('*.{css,png}', {
     useHash: true
 });
-fis.match('resource/**/*.css', {
+fis.match('globals/**', {
     useHash: false
 });
-// 所有模板放到 tempalte 目录下
-fis.match('*.js', {
-    useHash: false
-});
-// 所有模板放到 tempalte 目录下
-fis.match('*.html', {
-    useHash: false
-});
-fis.match('*.png', {
-   useHash: true
-});
+// fis.match('*.css', {
+//     useHash: true
+// });
+// fis.match('resource/**/*.css', {
+//     useHash: false
+// });
+// // 所有模板放到 tempalte 目录下
+// fis.match('*.js', {
+//     useHash: false
+// });
+// fis.match('lib/**', {
+//     useHash: false
+// });
+// fis.match('app/**', {
+//     useHash: false
+// });
+// // 所有模板放到 tempalte 目录下
+// fis.match('*.html', {
+//     useHash: false
+// });
+// fis.match('*.png', {
+//    useHash: true
+// });
 // // optimize
 // fis.media('prod')
 //     .match('*.js', {
